@@ -58,5 +58,21 @@ Acknowledgments
 ===============
 
 The maven-jxr-plugin has good examples of how this was done, could not have done this without seeing this code.
-See http://maven.apache.org/plugins/maven-jxr-plugin/
+* http://maven.apache.org/plugins/maven-jxr-plugin/
+
+Links
+=====
+
+Concordion Site:
+
+* http://concordion.org/
+
+Apache Maven:
+
+* http://maven.apache.org/
+
+Maven Site Plugin:
+
+* http://maven.apache.org/plugins/maven-site-plugin/
+
 
