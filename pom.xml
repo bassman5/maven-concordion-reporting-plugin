@@ -20,9 +20,15 @@
         </developer>
     </developers>
 
+    <scm>
+        <developerConnection>scm:git@github.com:bassman5/maven-concordion-reporting-plugin.git</developerConnection>
+        <url>https://github.com/bassman5/maven-concordion-reporting-plugin</url>
+    </scm>
+
+
     <issueManagement>
-        <system>GoogleCode</system>
-        <url>http://code.google.com/p/maven-concordion/issues/list</url>
+        <system>Github</system>
+        <url>https://github.com/bassman5/maven-concordion-reporting-plugin/issues</url>
     </issueManagement>
 
     <licenses>
