@@ -27,6 +27,7 @@ In the pom.xml for the project that contains concordion reports you will have an
 This will create the concordion files in target/concordion
 
 Then just add the following in the reporting section
+----------------------------------------------------
     <reporting>
         <plugins>
             <plugin>
