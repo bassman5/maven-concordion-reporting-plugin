@@ -5,9 +5,11 @@ This is a simple maven reporting that takes a directory structure with an html s
 in this case concordion reports, and add them to a maven site report.
 
 In the pom.xml for the project that contains concordion reports you will have an entry like this
+------------------------------------------------------------------------------------------------
+
     <build>
         <plugins>
-......
+    ......
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
@@ -20,7 +22,7 @@ In the pom.xml for the project that contains concordion reports you will have an
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
-...
+    ......
         </plugins>
     </build>
 
@@ -43,15 +45,25 @@ Then just add the following in the reporting section
         </plugins>
     </reporting>
 
-
 Configuration
 -------------
 
-<concordionDir>${basedir}/target/concordion</concordionDir>
+    <concordionDir>${basedir}/target/concordion</concordionDir>
 This is the directory defined in the build section, where the concordion files can be found
 
-<concordionIndexFile>acceptanceTests/AcceptanceTests.html</concordionIndexFile>
+    <concordionIndexFile>acceptanceTests/AcceptanceTests.html</concordionIndexFile>
 This is the top level html index file which will be the link you will be taken to from the Project Reports->Concordion menu
+
+Other Uses
+==========
+You can use this plugin to copy any html content into a maven site report.
+Just modify the menu name and change the source and output dirs.
+
+I am not expecting to enhance to this
+=====================================
+But please feel free to do what you like with it!
+
+Mick Dudley
 
 
 
@@ -59,7 +71,7 @@ Acknowledgments
 ===============
 
 The maven-jxr-plugin has good examples of how this was done, could not have done this without seeing this code.
-* http://maven.apache.org/plugins/maven-jxr-plugin/
+http://maven.apache.org/plugins/maven-jxr-plugin/
 
 Links
 =====
