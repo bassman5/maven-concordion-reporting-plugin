@@ -1,6 +1,9 @@
 Maven Concordion Site Report
 ============================
 
+Working on making a release and adding to maven repository
+----------------------------------------------------------
+
 This is a simple maven reporting plugin that takes a directory structure with an html structure,
 in this case Concordion reports, and add them to a maven site report.
 
