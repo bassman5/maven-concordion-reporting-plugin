@@ -21,6 +21,7 @@ public class ConcordionReportMojo extends AbstractMavenReport {
 
     public static final String PLUGIN_NAME = "Concordion-Report ";
     public static final String DEFAULT_REPORT_DIR = "concordion";
+    private boolean skip = false;
     /**
      * Output folder where the main page of the report will be generated. Note that this parameter is only relevant if
      * the goal is run directly from the command line or from the default lifecycle. If the goal is run indirectly as
@@ -46,18 +47,18 @@ public class ConcordionReportMojo extends AbstractMavenReport {
      */
     private SiteRenderer siteRenderer;
 
-    // The location of the concordion tests
     /**
      * @parameter default-value="${basedir}/target/concordion"
      * @required
+     * @description The location of the concordion tests
      */
     private String concordionDir;
 
 
-    // The location of the concordion index file within concordionDir
     /**
      * @parameter default-value="index.html"
      * @required
+     * @description The location of the concordion index file within concordionDir
      */
     private String concordionIndexFile;
 
@@ -66,8 +67,9 @@ public class ConcordionReportMojo extends AbstractMavenReport {
         super();
     }
 
-    /*
+    /**
      * Only used for testing
+     * Note this forces the declaration of a default constructure as well
      */
     protected ConcordionReportMojo(File outputDirectory,
                                 MavenProject project,
@@ -82,17 +84,24 @@ public class ConcordionReportMojo extends AbstractMavenReport {
     }
 
 
-
+    /**
+     * This allows the plugin to define that the report is generated outside the site plugin
+     * @return true
+     */
     @Override
     public boolean isExternalReport()
     {
         return true;
     }
 
+    /**
+     * Here we can decide if there are no concordion report files don't add to site
+     * @return true - we have a concordion directory and can generate report
+     */
     @Override
     public boolean canGenerateReport()
     {
-        /* Here we can decide if there are no concordion report files don't add to site */
+        skip = true;
 
         File sourceDir = new File(this.concordionDir);
         if (! sourceDir.isDirectory()) {
@@ -105,11 +114,19 @@ public class ConcordionReportMojo extends AbstractMavenReport {
             return false;
         }
 
+        skip = false;
         return true;
     }
 
+    /**
+     * Generate the report by copying the concordion directory structure into our site
+     * @param locale (not used)
+     * @throws MavenReportException
+     */
     protected void executeReport(Locale locale) throws MavenReportException {
-
+        if (skip) {
+            return;
+        }
 
         File directory = new File (getOutputDirectory());
         if ( !directory.exists() ) {
@@ -124,6 +141,10 @@ public class ConcordionReportMojo extends AbstractMavenReport {
     }
 
 
+    /**
+     * Our subdirectory within the report
+     * @return String
+     */
     protected String getOutputDirectory() {
         return outputDirectory.getAbsolutePath() + "/" + DEFAULT_REPORT_DIR;
     }
@@ -136,14 +157,28 @@ public class ConcordionReportMojo extends AbstractMavenReport {
         return siteRenderer;
     }
 
+    /**
+     * The description that appears on the Project Reports page
+     * @param locale (not used)
+     * @return
+     */
     public String getDescription(Locale locale) {
         return "The Concordion acceptance reports for the project";
     }
 
+    /**
+     * Define the name that appears in the Project Reports menu
+     * @param locale (not used)
+     * @return String name
+     */
     public String getName(Locale locale) {
         return "Concordion";
     }
 
+    /**
+     * The link to our html file (without .html???)
+     * @return String
+     */
     public String getOutputName() {
         return DEFAULT_REPORT_DIR + "/" + concordionIndexFile.replace(".html", "");
     }

@@ -36,7 +36,7 @@ Then just add the following in the reporting section
     <reporting>
         <plugins>
             <plugin>
-                <groupId>com.mickdudley.concordion</groupId>
+                <groupId>bassman5.github.com</groupId>
                 <artifactId>maven-concordion-reporting-plugin</artifactId>
                 <version>0.1.0-SNAPSHOT</version>
                 <configuration>
