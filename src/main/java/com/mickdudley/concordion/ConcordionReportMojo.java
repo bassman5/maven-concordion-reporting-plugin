@@ -21,7 +21,7 @@ public class ConcordionReportMojo extends AbstractMavenReport {
 
     public static final String PLUGIN_NAME = "Concordion-Report ";
     public static final String DEFAULT_REPORT_DIR = "concordion";
-    private boolean skip = false;
+    private boolean skipReportGeneration = false;
     /**
      * Output folder where the main page of the report will be generated. Note that this parameter is only relevant if
      * the goal is run directly from the command line or from the default lifecycle. If the goal is run indirectly as
@@ -101,7 +101,7 @@ public class ConcordionReportMojo extends AbstractMavenReport {
     @Override
     public boolean canGenerateReport()
     {
-        skip = true;
+        skipReportGeneration = true;
 
         File sourceDir = new File(this.concordionDir);
         if (! sourceDir.isDirectory()) {
@@ -114,7 +114,7 @@ public class ConcordionReportMojo extends AbstractMavenReport {
             return false;
         }
 
-        skip = false;
+        skipReportGeneration = false;
         return true;
     }
 
@@ -124,19 +124,18 @@ public class ConcordionReportMojo extends AbstractMavenReport {
      * @throws MavenReportException
      */
     protected void executeReport(Locale locale) throws MavenReportException {
-        if (skip) {
-            return;
-        }
+        if (!skipReportGeneration) {
 
-        File directory = new File (getOutputDirectory());
-        if ( !directory.exists() ) {
-            directory.mkdirs();
-        }
+            File directory = new File (getOutputDirectory());
+            if ( !directory.exists() ) {
+                directory.mkdirs();
+            }
 
-        try {
-            FileUtils.copyDirectoryStructure(new File(concordionDir), directory);
-        } catch (IOException e) {
-            throw new MavenReportException("Error copying concordion reports", e);
+            try {
+                FileUtils.copyDirectoryStructure(new File(concordionDir), directory);
+            } catch (IOException e) {
+                throw new MavenReportException("Error copying concordion reports", e);
+            }
         }
     }
 

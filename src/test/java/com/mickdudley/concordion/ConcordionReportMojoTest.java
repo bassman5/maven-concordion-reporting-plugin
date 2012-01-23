@@ -54,9 +54,9 @@ public class ConcordionReportMojoTest  {
     }
 
     @Test
-    public void testNoConcordionReportDir () {
+    public void testNoConcordionReportDir () throws MavenReportException {
         File outputDirectory = new File(getBasedir(), "target/test/unit/target/site");
-        File concordionDir = new File(outputDirectory, "concordion");
+        File concordionDir = new File(outputDirectory, "concordion99");
         MavenProject project = mock(MavenProject.class);
         SiteRenderer siteRenderer = mock(SiteRenderer.class);
 
@@ -68,6 +68,10 @@ public class ConcordionReportMojoTest  {
                 "index.html");
 
         assertFalse(mojo.canGenerateReport());
+
+        // The report should never get run but checking that nothing bad would happen
+        mojo.executeReport(null);
+        assertFalse(concordionDir.exists());
 
     }
 
