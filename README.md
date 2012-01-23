@@ -62,9 +62,6 @@ Other Uses
 You can use this plugin to copy any html content into a maven site report.
 Just modify the menu name and change the source and output dirs.
 
-I am not expecting to enhance to this
-=====================================
-But please feel free to do what you like with it!
 
 Mick Dudley
 

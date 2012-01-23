@@ -1,14 +1,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.mickdudley.concordion</groupId>
+    <groupId>bassman5.github.com</groupId>
     <artifactId>maven-concordion-reporting-plugin</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>maven-plugin</packaging>
     <name>Concordion Site Report plugin</name>
     <description>A maven plugin to incorporate concordion reports into a maven site report in the project reports section</description>
-    <url>http://maven.apache.org</url>
+    <url>http://bassman5.github.com/maven-concordion-reporting-plugin</url>
 
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>6</version>
+    </parent>
 
     <developers>
         <developer>
@@ -24,7 +29,6 @@
         <developerConnection>scm:git@github.com:bassman5/maven-concordion-reporting-plugin.git</developerConnection>
         <url>https://github.com/bassman5/maven-concordion-reporting-plugin</url>
     </scm>
-
 
     <issueManagement>
         <system>Github</system>
@@ -68,12 +72,6 @@
             <artifactId>mockito-core</artifactId>
             <version>1.8.5</version>
             <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.maven.shared</groupId>
-            <artifactId>maven-plugin-testing-harness</artifactId>
-            <version>1.1</version>
         </dependency>
 
     </dependencies>
