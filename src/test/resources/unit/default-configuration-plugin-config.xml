@@ -30,7 +30,7 @@ under the License.
     <build>
         <plugins>
         <plugin>
-            <groupId>bassman5.github.com</groupId>
+            <groupId>com.github.bassman5</groupId>
             <artifactId>maven-concordion-reporting-plugin</artifactId>
             <configuration>
                 <concordionDir>${basedir}/target/concordion</concordionDir>
@@ -43,7 +43,7 @@ under the License.
   <reporting>
     <plugins>
       <plugin>
-        <groupId>bassman5.github.com</groupId>
+        <groupId>com.github.bassman5</groupId>
         <artifactId>maven-concordion-reporting-plugin</artifactId>
       </plugin>
     </plugins>
