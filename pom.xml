@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.bassman5</groupId>
     <artifactId>maven-concordion-reporting-plugin</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.2</version>
     <packaging>maven-plugin</packaging>
     <name>Concordion Site Report plugin</name>
     <description>A maven plugin to incorporate concordion reports into a maven site report in the project reports section</description>
