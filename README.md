@@ -1,9 +1,6 @@
 Maven Concordion Site Report
 ============================
 
-Working on making a release and adding to maven repository
-----------------------------------------------------------
-
 This is a simple maven reporting plugin that takes a directory structure with an html structure,
 in this case Concordion reports, and add them to a maven site report.
 
@@ -38,7 +35,7 @@ Then just add the following in the reporting section
             <plugin>
                 <groupId>com.github.bassman5</groupId>
                 <artifactId>maven-concordion-reporting-plugin</artifactId>
-                <version>0.1.0-SNAPSHOT</version>
+                <version>1.0.2</version>
                 <configuration>
                     <concordionDir>${basedir}/target/concordion</concordionDir>
                     <concordionIndexFile>acceptanceTests/AcceptanceTests.html</concordionIndexFile>
@@ -48,14 +45,17 @@ Then just add the following in the reporting section
         </plugins>
     </reporting>
 
+You can put the reporting section in the module that contains the Concordion report or in it's parent pom.
+If the Concordion report directory or index files cannot be found, the report will be skipped, and an info log message tells you the report is skipped.
+
 Configuration
 -------------
 
     <concordionDir>${basedir}/target/concordion</concordionDir>
-This is the directory defined in the build section, where the Concordion files can be found
+The directory defined in the build section, where the Concordion files can be found.
 
     <concordionIndexFile>acceptanceTests/AcceptanceTests.html</concordionIndexFile>
-This is the top level html index file which will be the link you will be taken to from the Project Reports->Concordion menu
+The top level html index file which will be the link you will be taken to from the Project Reports->Concordion menu
 
 Other Uses
 ==========
