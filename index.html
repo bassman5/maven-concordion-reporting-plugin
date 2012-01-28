@@ -14,9 +14,9 @@
     }
     #container {
       margin: 0 auto;
-      width: 700px;
+      width: 800px;
     }
-    h1 { font-size: 3.8em; color: #2D5Fb4; margin-bottom: 3px; }
+    h1 { font-size: 3em; color: #2D5Fb4; margin-bottom: 3px; }
     h1 .small { font-size: 0.4em; }
     h1 a { text-decoration: none }
     h2 { font-size: 1.5em; color: #2D5Fb4; }
@@ -46,7 +46,7 @@
       <span class="small">by <a href="https://github.com/bassman5">bassman5</a></span></h1>
 
     <div class="description">
-      A maven plugin to incorporate concordion reports into a maven site report in the project reports section
+      A maven plugin to incorporate Concordion reports into a maven site report in the project reports section
     </div>
 
     
@@ -55,13 +55,36 @@
 in this case Concordion reports, and add them to a maven site report.
 
 </p>
-    
 
-    
+      <p>Add the following in the reporting section</p>
+    <pre>
+&lt;reporting&gt;
+   &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;com.github.bassman5&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-concordion-reporting-plugin&lt;/artifactId&gt;
+        &lt;version&gt;1.0.2&lt;/version&gt;
+        &lt;configuration&gt;
+          &lt;concordionDir&gt;${basedir}/target/concordion&lt;/concordionDir&gt;
+          &lt;concordionIndexFile&gt;acceptanceTests/AcceptanceTests.html&lt;/concordionIndexFile&gt;
+        &lt;/configuration&gt;
+      &lt;/plugin&gt;
 
-    
+  &lt;/plugins&gt;
+&lt;/reporting&gt;
+        </pre>
 
+<p>
+    The directory defined in the build section, where the Concordion files can be found is set in concordionDir
+</p>
+<p>
+    The top level html index file which will be the link you will be taken to from the Project Reports->Concordion menu is set in concordionIndexFile
+</p>
+
+<p>Then in your site report the Concordion report will be added to the Project Reports section</p>
+      <img src="images/site-example1.png" />
     
+      <p>Clicking on the Concordion menu will take you to your Concordion html index file.</p>
       <h2>License</h2>
       <p>The Apache Software License, Version 2.0
 
@@ -72,7 +95,7 @@ http://www.apache.org/licenses/LICENSE-2.0.html</p>
 
     
       <h2>Contact</h2>
-      <p>Mick Dudley mick@dudley.uk.com
+      <p>Mick Dudley mick at dudley.uk.com
 <br/>      </p>
     
 
