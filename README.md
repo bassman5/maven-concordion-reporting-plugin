@@ -7,8 +7,7 @@ in this case Concordion reports, and add them to a maven site report.
 Works with maven 2.2.1 and 3.0
 ------------------------------
 
-This project contains an example Concordion report with a navigable index from the mvn site:site
-------------------------------------------------------------------------------------------------
+*This project contains an example Concordion report with a navigable index from the mvn site:site*
 
 In the pom.xml for the project that contains Concordion reports you will have an entry like this
 ------------------------------------------------------------------------------------------------
@@ -36,7 +35,8 @@ This will create the Concordion files in target/concordion
 
 Then just add the following in the reporting section
 ----------------------------------------------------
-* Maven 2
+### Maven 2
+
     <reporting>
         <plugins>
             <plugin>
@@ -51,7 +51,9 @@ Then just add the following in the reporting section
 
         </plugins>
     </reporting>
-* Maven 3
+
+### Maven 3
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
