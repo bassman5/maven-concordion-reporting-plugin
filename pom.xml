@@ -177,7 +177,7 @@
                         <artifactId>maven-concordion-reporting-plugin</artifactId>
                         <version>1.0.2</version>
                         <configuration>
-                            <concordionDir>${basedir}/target/concordions</concordionDir>
+                            <concordionDir>${basedir}/target/concordion</concordionDir>
                             <concordionIndexFile>acceptanceTests/AcceptanceTests.html</concordionIndexFile>
                         </configuration>
                     </plugin>
